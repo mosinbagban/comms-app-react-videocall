@@ -31,6 +31,19 @@ const App = () => {
    return resp?.data?.access_token
   }
 
+  const theme = {
+    colors: {
+      // Change the border on the video preview to cyan
+      purple: {
+        400: 'cyan',
+      },
+      grey: {
+        100: 'cyan', // Change body text and the borders around the Avatar and Select to cyan
+        200: 'blue', // Change the border around Select (when open) to blue
+      },
+    },
+  };
+
   return (
     <TranslationProvider>
     {token &&
@@ -42,6 +55,7 @@ const App = () => {
             customThemes={{
               'My Theme': { colors: { white: 'yellow', primary: { 400: 'red' }, secondary: { 400: 'blue' } } },
             }}
+            // theme={theme}
           >
             <Navigator />
           </ThemeProvider>

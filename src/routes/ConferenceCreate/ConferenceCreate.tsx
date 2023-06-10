@@ -3,6 +3,7 @@ import ConferenceCreateHeader from '@components/ConferenceCreateHeader';
 import { Layout, useTheme } from '@dolbyio/comms-uikit-react';
 import useConferenceCleanup from '@hooks/useConferenceCleanup';
 import useConferenceCreate from '@hooks/useConferenceCreate';
+import { LogoColor } from '@src/assets';
 import { SideDrawerProvider } from '@src/context/SideDrawerContext';
 import ConferenceCreateInput from '@src/routes/ConferenceCreate/ConferenceCreateInput';
 import DeviceSetup from '@src/routes/ConferenceCreate/DeviceSetup';
@@ -44,13 +45,15 @@ export const ConferenceCreate = () => {
   };
   return (
     <SideDrawerProvider>
+      
       <Layout
         testID="ConferenceCreateRoute"
         backgroundColor="white"
         className={cx(styles.layout, { [styles.layoutSafari]: isIPhone })}
       >
         <ConferenceCreateHeader />
-
+       <LogoColor style={{height:'200px',
+                  width: '200px'}} />
         {step === CreateStep.username && (
           <ConferenceCreateInput
             type="user"
