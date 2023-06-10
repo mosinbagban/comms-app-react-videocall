@@ -7,6 +7,7 @@ import { CreateStep } from '@src/types/routes';
 import React, { useMemo } from 'react';
 
 import styles from './ConferenceCreateHeader.module.scss';
+import { LogoColor } from '@src/assets';
 
 export const headerSizes = {
   small: 48,
@@ -53,12 +54,14 @@ export const ConferenceCreateHeader = () => {
           />
         )}
       </Space>
-      <Text
+      {/* <Text
         testID="ConferenceCreateHeaderTitle"
         color="black"
         type="H4"
         id={step === CreateStep.deviceSetup ? 'setUp' : 'joinMeeting'}
-      />
+      /> */}
+    <LogoColor style={{height:'100px',
+                  width: '200px'}} />
       <Space style={{ width: 48 }}>
         {step === CreateStep.deviceSetup && (
           <IconButton

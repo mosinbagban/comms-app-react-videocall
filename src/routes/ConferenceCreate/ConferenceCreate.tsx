@@ -59,8 +59,6 @@ export const ConferenceCreate = () => {
         className={cx(styles.layout, { [styles.layoutSafari]: isIPhone })}
       >
         <ConferenceCreateHeader />
-       <LogoColor style={{height:'200px',
-                  width: '200px'}} />
         {step === CreateStep.username && (
           <ConferenceCreateInput
             type="user"
