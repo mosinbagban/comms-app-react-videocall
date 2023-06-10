@@ -1,6 +1,6 @@
 import ConferenceCreateFooter from '@components/ConferenceCreateFooter';
 import ConferenceCreateHeader from '@components/ConferenceCreateHeader';
-import { Layout, useTheme } from '@dolbyio/comms-uikit-react';
+import { Layout, useCamera, useTheme } from '@dolbyio/comms-uikit-react';
 import useConferenceCleanup from '@hooks/useConferenceCleanup';
 import useConferenceCreate from '@hooks/useConferenceCreate';
 import { LogoColor } from '@src/assets';
@@ -9,7 +9,7 @@ import ConferenceCreateInput from '@src/routes/ConferenceCreate/ConferenceCreate
 import DeviceSetup from '@src/routes/ConferenceCreate/DeviceSetup';
 import { CreateStep } from '@src/types/routes';
 import cx from 'classnames';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import styles from './ConferenceCreate.module.scss';
 
@@ -18,7 +18,14 @@ const isIPhone = navigator.userAgent.match(/iPhone/i);
 export const ConferenceCreate = () => {
   const { step } = useConferenceCreate();
   const { isDesktop } = useTheme();
+  const { stopLocalVideo } = useCamera();
   useConferenceCleanup();
+
+  useEffect(() => {
+    if (step !== CreateStep.deviceSetup) {
+      stopLocalVideo();
+    }
+  }, [step]);
 
   const [isInputFocused, setIsInputFocused] = useState(false);
 
